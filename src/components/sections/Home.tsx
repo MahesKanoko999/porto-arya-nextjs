@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 import { Facebook, Twitter } from "lucide-react";
 
 export default function HomeSection() {
@@ -11,7 +11,7 @@ export default function HomeSection() {
                         {/* Pattern/Border Effect replicating the original .pattern */}
                         <div className="absolute inset-0 bg-transparent border-2 border-white/20 translate-x-4 translate-y-4 z-0"></div>
                         <div className="absolute inset-0 overflow-hidden bg-black z-10">
-                            <Image
+                            <SafeImage
                                 src="/img/fotobaru.jpg"
                                 alt="Arya Wiratama"
                                 fill

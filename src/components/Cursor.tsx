@@ -7,6 +7,17 @@ export default function Cursor() {
     const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
+        // Check if device is touch or small screen
+        const isTouchDevice = () => {
+            return (('ontouchstart' in window) ||
+                (navigator.maxTouchPoints > 0));
+        }
+
+        if (isTouchDevice() || window.innerWidth < 768) {
+            setIsHovering(false); // Ensure hover state is off
+            return; // Don't add listeners on mobile
+        }
+
         const mouseMove = (e: MouseEvent) => {
             setMousePosition({
                 x: e.clientX,
@@ -33,16 +44,16 @@ export default function Cursor() {
     }, []);
 
     return (
-        <>
+        <div className="hidden md:block pointer-events-none fixed inset-0 z-[100]">
             {/* Main Dot */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-[#FAC921] rounded-full pointer-events-none z-[100] mix-blend-difference"
+                className="fixed top-0 left-0 w-2 h-2 bg-[#FAC921] rounded-full mix-blend-difference"
                 animate={{ x: mousePosition.x - 4, y: mousePosition.y - 4 }}
                 transition={{ type: "tween", ease: "backOut", duration: 0 }}
             />
             {/* Trailing Circle */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 border border-[#FAC921] rounded-full pointer-events-none z-[99] mix-blend-difference"
+                className="fixed top-0 left-0 w-8 h-8 border border-[#FAC921] rounded-full mix-blend-difference"
                 animate={{
                     x: mousePosition.x - 16,
                     y: mousePosition.y - 16,
@@ -51,6 +62,7 @@ export default function Cursor() {
                 }}
                 transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
             />
-        </>
+        </div>
     );
 }
+

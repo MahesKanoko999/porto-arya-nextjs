@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -71,7 +71,7 @@ export default function PortfolioSection() {
                             transition={{ duration: 0.3 }}
                             className="group relative h-96 w-full cursor-pointer overflow-hidden rounded-lg"
                         >
-                            <Image
+                            <SafeImage
                                 src={item.img}
                                 alt={item.title}
                                 fill

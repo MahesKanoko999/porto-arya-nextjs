@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 
 const posts = [
     {
@@ -45,7 +45,7 @@ export default function BlogSection() {
                 {posts.map(post => (
                     <div key={post.id} className="group relative flex flex-col md:flex-row gap-8 items-start">
                         <div className="relative w-full md:w-1/3 aspect-video md:aspect-[4/3] overflow-hidden rounded-lg">
-                            <Image
+                            <SafeImage
                                 src={post.img}
                                 alt={post.title}
                                 fill
