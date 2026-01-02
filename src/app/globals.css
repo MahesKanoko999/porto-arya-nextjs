@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-open-sans);
+  --font-heading: var(--font-dosis);
+
+  --color-primary: #FAC921;
+  --color-dark-bg: #12141C;
+  --color-dark-sub: #0D0F16;
+}
+
+/* Custom Utilities if needed later, but sticking to Tailwind for now */
+body {
+  font-family: var(--font-open-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-dosis);
+}
